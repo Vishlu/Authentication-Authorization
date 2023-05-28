@@ -1,0 +1,59 @@
+body{
+    background: linear-gradient(to right, rgb(101,101,101), rgb(101,101,101), rgb(68,68,68), rgb(51,51,51), rgb(21,21,21));
+}
+
+label{
+    color:#aaaaaa;
+    font-size:large;
+}
+.icon{
+    max-width: 100px;
+    border-radius: 50%;
+}
+input[type=text], input[type=password]{
+    width:200px;
+    padding:8px 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid white;
+    outline: none;
+    color:white;
+    font-size:medium;
+}
+
+input[type=submit]{
+    width: 200px;
+    border:none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin: 4px 2px;
+    background-color: #555555;
+    color:white;
+    border-radius: 5px;
+    color:#ffffff;
+}
+
+.creation{
+    color:#aaaaaa;
+}
+.creation-link{
+    outline: none;
+    color:#3399ff;
+    text-decoration: none;
+}
+
+.error{
+    color:red;
+}
+
+
+.top-error{
+    color:red;
+    font-size: 20px;
+}

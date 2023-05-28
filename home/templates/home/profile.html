@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <link rel="stylesheet" href="{% static 'home/css/author.css' %}">
+</head>
+<body align='center'>
+
+
+<div class="sidebar">
+ <h1>{{user}}</h1>
+</div>
+
+<div class="main">
+  <h2>Edit your profile</h2>
+</div>
+     
+    {% if users != None %}
+    <h3>LIST OF USERS</h3>
+    {% for user in users %}
+    <a href="{% url 'userdetail'  user.id %}">{{user.username}}</a><br>
+    {% endfor %}
+    {% endif %}
+
+
+    {% if messages %}
+    {% for message in messages %}
+    <small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
+    {% endfor %}
+    {% endif %}
+
+    <form action="" method="POST">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <p>{{error}}</p>
+    {% endfor %}
+    {% endif %}
+
+    {% for fm in form %}
+    {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}<br><br>
+    {% endfor %} 
+
+
+    <input type="submit"value="update">
+    <br><br> 
+
+    </form>
+
+   <a href="{% url 'logoutform' %}">Logout</a>
+   <a href="{% url 'change-pas' %}">Change password</a>
+   <a href="{% url 'change2pas' %}">Set password</a>
+
+
+
+    {% comment %} 
+    {% if perms.home.delete_post %}
+    <input type="submit" value="delete"><br><br>
+    {% else %}
+    no delete permission
+    {% endif %}
+
+    {% if perms.home.add_post %}
+    <input type="submit" value="add"><br><br>
+    {% else %}
+    no add permission
+    {% endif %}
+   
+    {% if perms.home.view_post %}
+    <input type="submit" value="view"><br><br>
+    {% else %}
+    no view permission
+    {% endif %} {% endcomment %}
+
+
+</body>
+</html>

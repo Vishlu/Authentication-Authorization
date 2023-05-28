@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'home/css/login.css' %}">
+</head>
+<body>
+    <form action="" method="POST" align="center" novalidate>
+    {% csrf_token %}
+    <br><br><br>
+    <img src="{% static 'home/photos/icon.png' %}" alt="note" class="icon">
+    <br><br><br>
+
+    {% if login.non_field_errors %}
+    {% for error in login.non_field_errors %}
+    <p class="top-error">{{error|striptags}}</p>
+    {% endfor %}
+    {% endif %}
+    
+    {% for log in login %}
+    {{log.label_tag}}<br> {{log}} <p class="error">{{log.errors|striptags}}</p>
+    {% endfor %}
+    <input type="submit" value="Login">
+    <br><br>
+    <p class="creation">Dont't have an account ? &nbsp;<a class="creation-link" href="{% url 'register' %}">Register Here</a></p>
+    </form>
+    <br>
+
+</body>
+</html>
